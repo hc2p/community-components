@@ -29,44 +29,44 @@ The following table lists the configurable parameters of the openldap chart and 
 | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
 | `replicaCount`                     | Number of replicas                                                                                                                        | `3`                 |
 | `updateStrategy`                   | StatefulSet update strategy                                                                                                               | `{}`                |
-| `image.repository`                 | Container image repository                                                                                                                | `osixia/openldap`   |
-| `image.tag`                        | Container image tag                                                                                                                       | `1.1.10`            |
-| `image.pullPolicy`                 | Container pull policy                                                                                                                     | `IfNotPresent`      |
+| `openldap.imagerepository`                 | Container image repository                                                                                                                | `osixia/openldap`   |
+| `openldap.imagetag`                        | Container image tag                                                                                                                       | `openldap.11.10`            |
+| `openldap.imagepullPolicy`                 | Container pull policy                                                                                                                     | `IfNotPresent`      |
 | `extraLabels`                      | Labels to add to the Resources                                                                                                            | `{}`                |
 | `podAnnotations`                   | Annotations to add to the pod                                                                                                             | `{}`                |
 | `existingSecret`                   | Use an existing secret for admin and config user passwords                                                                                | `""`                |
-| `service.annotations`              | Annotations to add to the service                                                                                                         | `{}`                |
-| `service.externalIPs`              | Service external IP addresses                                                                                                             | `[]`                |
-| `service.ldapPort`                 | External service port for LDAP                                                                                                            | `389`               |
-| `service.ldapPortNodePort`                 | Nodeport of External service port for LDAP if service.type is NodePort                                                                                                            | `nil`               |
-| `service.loadBalancerIP`           | IP address to assign to load balancer (if supported)                                                                                      | `""`                |
-| `service.loadBalancerSourceRanges` | List of IP CIDRs allowed access to load balancer (if supported)                                                                           | `[]`                |
-| `service.sslLdapPort`              | External service port for SSL+LDAP                                                                                                        | `636`               |
-| `service.sslLdapPortNodePort`                 | Nodeport of External service port for SSL if service.type is NodePort                                                                                                            | `nil`               |
-| `service.type`                     | Service type can be ClusterIP, NodePort, LoadBalancer                                                                                                                              | `ClusterIP`         |
-| `env`                              | List of key value pairs as env variables to be sent to the docker image. See https://github.com/osixia/docker-openldap for available ones | `[see values.yaml]` |
-| `logLevel`                         | Set the container log level. Valid values: `none`, `error`, `warning`, `info`, `debug`, `trace`                                           | `info`              |
-| `customTLS.enabled`                      | Set to enable TLS/LDAPS with custom certificate - should also set `tls.secret`                                                                                    | `false`             |
-| `customTLS.secret`                       | Secret containing TLS cert and key must contain the keys tls.key , tls.crt and ca.crt (if tls.CA.enabled: true)                                                                       | `""`                |
-| `customTLS.CA.enabled`                   | Set to enable custom CA crt file                                                                         | `false`             |
-| `adminPassword`                    | Password for admin user. Unset to auto-generate the password                                                                              | None                |
-| `configPassword`                   | Password for config user. Unset to auto-generate the password                                                                             | None                |
-| `customLdifFiles`                  | Custom ldif files to seed the LDAP server. List of filename -> data pairs                                                                 | None                |
-| `persistence.enabled`              | Whether to use PersistentVolumes or not                                                                                                   | `false`             |
-| `persistence.storageClass`         | Storage class for PersistentVolumes.                                                                                                      | `<unset>`           |
-| `persistence.accessMode`           | Access mode for PersistentVolumes                                                                                                         | `ReadWriteOnce`     |
-| `persistence.size`                 | PersistentVolumeClaim storage size                                                                                                        | `8Gi`               |
-| `resources`                        | Container resource requests and limits in yaml                                                                                            | `{}`                |
-| `test.enabled`                     | Conditionally provision test resources                                                                                                    | `false`             |
-| `test.image.repository`            | Test container image requires bats framework                                                                                              | `dduportal/bats`    |
-| `test.image.tag`                   | Test container tag                                                                                                                        | `0.4.0`             |
-| `replication.enabled`              | Enable the multi-master replication | `true` |
-| `replication.retry`              | retry period for replication in sec | `60` |
-| `replication.timeout`              | timeout for replication  in sec| `1` |
-| `replication.starttls`              | starttls replication | `critical` |
-| `replication.tls_reqcert`              | tls certificate validation for replication | `never` |
-| `replication.interval`              | interval for replication | `00:00:00:10` |
-| `replication.clusterName`          | Set the clustername for replication | "cluster.local" |
+| `openldap.serviceannotations`              | Annotations to add to the service                                                                                                         | `{}`                |
+| `openldap.serviceexternalIPs`              | Service external IP addresses                                                                                                             | `[]`                |
+| `openldap.serviceldapPort`                 | External service port for LDAP                                                                                                            | `389`               |
+| `openldap.serviceldapPortNodePort`                 | Nodeport of External service port for LDAP if service.type is NodePort                                                                                                            | `nil`               |
+| `openldap.serviceloadBalancerIP`           | IP address to assign to load balancer (if supported)                                                                                      | `""`                |
+| `openldap.serviceloadBalancerSourceRanges` | List of IP CIDRs allowed access to load balancer (if supported)                                                                           | `[]`                |
+| `openldap.servicesslLdapPort`              | External service port for SSL+LDAP                                                                                                        | `636`               |
+| `openldap.servicesslLdapPortNodePort`                 | Nodeport of External service port for SSL if service.type is NodePort                                                                                                            | `nil`               |
+| `openldap.servicetype`                     | Service type can be ClusterIP, NodePort, LoadBalancer                                                                                                                              | `ClusterIP`         |
+| `openldap.env`                              | List of key value pairs as env variables to be sent to the docker image. See https://github.com/osixia/docker-openldap for available ones | `[see values.yaml]` |
+| `openldap.logLevel`                         | Set the container log level. Valid values: `none`, `error`, `warning`, `info`, `debug`, `trace`                                           | `info`              |
+| `openldap.customTLSenabled`                      | Set to enable TLS/LDAPS with custom certificate - should also set `openldap.tlssecret`                                                                                    | `false`             |
+| `openldap.customTLSsecret`                       | Secret containing TLS cert and key must contain the keys tls.key , tls.crt and ca.crt (if tls.CA.enabled: true)                                                                       | `""`                |
+| `openldap.customTLSCA.enabled`                   | Set to enable custom CA crt file                                                                         | `false`             |
+| `openldap.adminPassword`                    | Password for admin user. Unset to auto-generate the password                                                                              | None                |
+| `openldap.configPassword`                   | Password for config user. Unset to auto-generate the password                                                                             | None                |
+| `openldap.customLdifFiles`                  | Custom ldif files to seed the LDAP server. List of filename -> data pairs                                                                 | None                |
+| `openldap.persistenceenabled`              | Whether to use PersistentVolumes or not                                                                                                   | `false`             |
+| `openldap.persistencestorageClass`         | Storage class for PersistentVolumes.                                                                                                      | `<unset>`           |
+| `openldap.persistenceaccessMode`           | Access mode for PersistentVolumes                                                                                                         | `ReadWriteOnce`     |
+| `openldap.persistencesize`                 | PersistentVolumeClaim storage size                                                                                                        | `8Gi`               |
+| `openldap.resources`                        | Container resource requests and limits in yaml                                                                                            | `{}`                |
+| `openldap.testenabled`                     | Conditionally provision test resources                                                                                                    | `false`             |
+| `openldap.testimage.repository`            | Test container image requires bats framework                                                                                              | `dduportal/bats`    |
+| `openldap.testimage.tag`                   | Test container tag                                                                                                                        | `openldap.04.0`             |
+| `openldap.replicationenabled`              | Enable the multi-master replication | `true` |
+| `openldap.replicationretry`              | retry period for replication in sec | `60` |
+| `openldap.replicationtimeout`              | timeout for replication  in sec| `1` |
+| `openldap.replicationstarttls`              | starttls replication | `critical` |
+| `openldap.replicationtls_reqcert`              | tls certificate validation for replication | `never` |
+| `openldap.replicationinterval`              | interval for replication | `00:00:00:10` |
+| `openldap.replicationclusterName`          | Set the clustername for replication | "cluster.local" |
 | `phpldapadmin.enabled`             | Enable the deployment of PhpLdapAdmin | `true`|
 | `phpldapadmin.ingress`             | Ingress of Phpldapadmin | `{}` |
 | `phpldapadmin.env`  | Environment variables for PhpldapAdmin| `{}` |
@@ -82,12 +82,12 @@ $ helm install --name openldap -f values.yaml stable/openldap .
 ```
 
 ## PhpLdapAdmin
-To enable PhpLdapAdmin set `phpldapadmin.enabled`  to `true`
+To enable PhpLdapAdmin set `openldap.phpldapadminenabled`  to `true`
 
 Ingress can be configure if you want to expose the service.
 Setup the env part of the configuration to access the OpenLdap server
 
-**Note** : The ldap host should match the following `namespace.Appfullname`
+**Note** : The ldap host should match the following `openldap.namespaceAppfullname`
 
 Example : 
 ```

@@ -1,14 +1,5 @@
 apiVersion: v2
 name: openldap
-dependencies:
-  - name: openldap
-    version: 2.1.3
-  - name: ltb-passwd
-    version: 0.1.x
-    condition: ltb-passwd.enabled
-  - name: phpldapadmin
-    version: 0.1.x
-    condition: phpldapadmin.enabled
 home: https://www.openldap.org
 version: 2.1.3
 appVersion: 2.4.57
