@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: ceph-csi-network
+  namespace: ceph-csi-rbd
+  labels:
+    k8s-app: ceph-csi-network
+spec:
+  selector:
+    matchLabels:
+      name: ceph-csi-network
+  template:
+    metadata:
+      labels:
+        name: ceph-csi-network
+    spec:
+      hostPID: true
+      tolerations:
+        - key: node-role.kubernetes.io/control-plane
+          operator: Exists
+          effect: NoSchedule
+      containers:
+        - name: csi-network
+          image: busybox:stable
+          command:
+            - /bin/sh
+            - -c
+            - |
+              ln -s -f /proc/$$$/ns/net /network-target/net
+              trap : TERM INT
+              sleep infinity & wait
+          resources:
+            requests:
+              cpu: 10m
+              memory: 10Mi
+          volumeMounts:
+            - name: network-target
+              mountPath: /network-target
+      volumes:
+        - name: network-target
+          hostPath:
+            path: /var/lib/kubelet/plugins/rbd.csi.ceph.com
+            type: DirectoryOrCreate

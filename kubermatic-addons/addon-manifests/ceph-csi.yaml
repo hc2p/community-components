@@ -1,0 +1,16 @@
+apiVersion: kubermatic.k8c.io/v1
+kind: AddonConfig
+metadata:
+  name: ceph-csi
+spec:
+  description: Add credentials for Ceph 
+  shortDescription: Connect your user cluster to Ceph
+  formSpec:
+    - displayName: Ceph client name
+      internalName: ClientName
+      required: true
+      type: text
+    - displayName: Ceph client key
+      internalName: ClientKey
+      required: true
+      type: text
