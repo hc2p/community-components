@@ -6,7 +6,7 @@ metadata:
     storageclass.beta.kubernetes.io/is-default-class: "true"
 provisioner: rbd.csi.ceph.com
 parameters:
-  clusterID: bd5298f1-95aa-11ed-9a47-fd26345eb73a
+  clusterID: 93e7b295-e4c8-48ee-a306-a5eac2087747
   csi.storage.k8s.io/controller-expand-secret-name: csi-rbd-secret
   csi.storage.k8s.io/controller-expand-secret-namespace: ceph-csi-rbd
   csi.storage.k8s.io/fstype: ext4
@@ -15,6 +15,6 @@ parameters:
   csi.storage.k8s.io/provisioner-secret-name: csi-rbd-secret
   csi.storage.k8s.io/provisioner-secret-namespace: ceph-csi-rbd
   imageFeatures: layering
-  pool: kubernetes
+  pool: cephpool
 reclaimPolicy: Delete
 allowVolumeExpansion: true
