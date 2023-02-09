@@ -58,7 +58,7 @@ sync-helm-operator-manifests:
 
 	curl -L https://raw.githubusercontent.com/fluxcd/helm-operator/${HELM_OPERATOR_VERSION}/deploy/crds.yaml \
 		> custom-addon/helm-operator/crds.yaml
-	
+
 	curl -L https://raw.githubusercontent.com/fluxcd/helm-operator/${HELM_OPERATOR_VERSION}/deploy/rbac.yaml \
 		> custom-addon/helm-operator/rbac.yaml
 
@@ -77,4 +77,3 @@ theia-docker-build:
 .PHONY: theia-docker-release
 theia-docker-release: theia-docker-build
 	docker push ${THEIA_REPO}:${THEIA_TAG}
-

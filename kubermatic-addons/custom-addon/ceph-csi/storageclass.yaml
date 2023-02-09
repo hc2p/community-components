@@ -6,7 +6,7 @@ metadata:
     storageclass.beta.kubernetes.io/is-default-class: "true"
 provisioner: rbd.csi.ceph.com
 parameters:
-  clusterID: 93e7b295-e4c8-48ee-a306-a5eac2087747
+  clusterID: ed02f475-d0c1-4904-9250-3056fb8628e1
   csi.storage.k8s.io/controller-expand-secret-name: csi-rbd-secret
   csi.storage.k8s.io/controller-expand-secret-namespace: ceph-csi-rbd
   csi.storage.k8s.io/fstype: ext4
