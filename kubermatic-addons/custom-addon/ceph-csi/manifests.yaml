@@ -60,7 +60,7 @@ metadata:
     heritage: Helm
 data:
   config.json: |-
-    [{"clusterID":"ed02f475-d0c1-4904-9250-3056fb8628e1","monitors":["146.4.107.53:3300","146.4.107.54:3300","146.4.107.55:3300"],"rbd":{"netNamespaceFilePath":"/var/lib/kubelet/plugins/rbd.csi.ceph.com/net","radosNamespace":"{{ .Variables.ClientName}}"}}]
+    [{"clusterID":"ed02f475-d0c1-4904-9250-3056fb8628e1","monitors":["146.4.107.53:3300","146.4.107.54:3300","146.4.107.52:3300"],"rbd":{"netNamespaceFilePath":"/var/lib/kubelet/plugins/rbd.csi.ceph.com/net","radosNamespace":"{{ .Variables.ClientName}}"}}]
   cluster-mapping.json: |-
     []
 ---
